@@ -18,7 +18,7 @@ class BaseAnalytics {
     var name:Double! = 0
     init(jsonPath: String){
         
-        
+        //MARK: Get JSON from URL        
         Alamofire.request(.GET, "http://www.dornerdigital.com/sales/SalesData.json")
             .responseJSON { response in
               //  print(response.request)  // original URL request
@@ -28,15 +28,15 @@ class BaseAnalytics {
                 
                 if let value = response.result.value {
                     //print("JSON: \(JSON)")
-                    let json = JSON(value)
+                    self.serverJson = JSON(value)
                     
                     //Once this class is called in my viewDidLoad this json value is blank??
-                    print(json["salesdata"]["list"][0]["todays_sales"].double!)
+                    print(self.serverJson["salesdata"]["list"][0]["todays_sales"].double!)
                  
                 }
         }
         
-        
+        //MARK: Get JSON from file
         if let path = NSBundle.mainBundle().pathForResource(jsonPath, ofType: "json") {
             do {
                 let data = try NSData(contentsOfURL: NSURL(fileURLWithPath: path), options: NSDataReadingOptions.DataReadingMappedIfSafe)

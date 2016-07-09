@@ -30,6 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        BaseAnalytics.init(jsonPath: "SalesData")
         
         
         let days = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"]
