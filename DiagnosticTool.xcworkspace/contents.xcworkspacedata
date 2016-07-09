@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:DiagnosticTool/ServerAnalytics.swift">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "Legacy">
+      <FileRef
+         location = "group:BriansUpdatedCode.swift">
+      </FileRef>
+      <FileRef
+         location = "group:DiagnosticTool/SalesData.swift">
+      </FileRef>
+      <FileRef
+         location = "group:DiagnosticTool/SalesDataAnalytics.swift">
+      </FileRef>
+      <FileRef
+         location = "group:DiagnosticTool/SalesData.swift">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:DiagnosticTool.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

@@ -1,0 +1,42 @@
+{
+    "salesdata":{
+        "meta":{
+            "start":0,
+            "count":1
+        },
+        "list":[
+                {
+                "chg_percent": 13,
+                "todays_sales": 230000.00,
+                "yesterdays_sales": 123000.00,
+                "remaining_inventory": 350000.00,
+                "year_high": 280000.00,
+                "year_low": 89470.00,
+                "daily_sales":[
+                         200000.00,
+                         130000.00,
+                         350000.00,
+                         520000.00,
+                         426000.00,
+                         611000.00,
+                         750000.00
+                               ],
+                "quarterly_sales":[
+                               1230000.00,
+                               2123000.00,
+                               3195000.00,
+                               4122000.00,
+                               ]
+                  }
+                ]
+    },
+    "server_status":{  
+        "meta":{  
+            "start":0,
+            "count":1
+        },
+        "list":[  
+        
+        ]
+    }
+}
