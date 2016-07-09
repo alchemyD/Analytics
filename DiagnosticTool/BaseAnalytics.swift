@@ -26,8 +26,13 @@ class BaseAnalytics {
                 //print(response.data)     // server data
                print(response.result.value)   // result of response serialization
                 
-                if let JSON = response.result.value {
+                if let value = response.result.value {
                     //print("JSON: \(JSON)")
+                    let json = JSON(value)
+                    
+                    //Once this class is called in my viewDidLoad this json value is blank??
+                    print(json["salesdata"]["list"][0]["todays_sales"].double!)
+                 
                 }
         }
         
