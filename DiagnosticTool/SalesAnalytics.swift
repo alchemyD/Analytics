@@ -19,7 +19,7 @@ class SalesAnalytics: BaseAnalytics {
         super.init(jsonPath: "SalesData")
         
         
-       self.today = serverJson["salesdata"]["list"][0]["todays_sales"].double!
+       self.today = jsonObj["salesdata"]["list"][0]["todays_sales"].double!
        self.yesterday = jsonObj["salesdata"]["list"][0]["yesterdays_sales"].double!
         
         //for Loop to append daily_sales array with JSON data

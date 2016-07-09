@@ -19,12 +19,12 @@ class BaseAnalytics {
     init(jsonPath: String){
         
         
-        Alamofire.request(.GET, "http://www.dornerdigital.com/sales/SalesData.json", parameters: ["foo": "bar"])
+        Alamofire.request(.GET, "http://www.dornerdigital.com/sales/SalesData.json")
             .responseJSON { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
-                print(response.result.value)   // result of response serialization
+              //  print(response.request)  // original URL request
+              //  print(response.response) // URL response
+                //print(response.data)     // server data
+               print(response.result.value)   // result of response serialization
                 
                 if let JSON = response.result.value {
                     //print("JSON: \(JSON)")
