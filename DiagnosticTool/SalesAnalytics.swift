@@ -11,7 +11,7 @@ import Foundation
 class SalesAnalytics: BaseAnalytics {
     
     var today: Double! = 0
-    var yesterday: Double! = 0
+    var yesterday: Double!
     var daily: [Double] = []
     var quarterly: [Double] = []
     

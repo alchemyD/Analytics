@@ -15,10 +15,13 @@ import Alamofire
 class ViewController: UIViewController, UITableViewDelegate{
     
     //MARK: Declaring Variables
+    
     var analytics = Analytics()
+    var serverJson:JSON!
+    var timer = NSTimer()
+    var timerExtended = NSTimer()
     
-    
-    
+
     //MARK: Outlets
    // @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var lineChartView: LineChartView!
@@ -30,22 +33,32 @@ class ViewController: UIViewController, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        BaseAnalytics.init(jsonPath: "SalesData")
+        salesView.alpha = 0
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(populate), userInfo: nil, repeats: true)
         
+        timerExtended = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: #selector(populate), userInfo: nil, repeats: true)
+
+    }
+    func populate(){
+        
+        
+        timer.invalidate()
         
         let days = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"]
-        setChart(days, values: analytics.sales.daily)
+        setChart(days, values: analytics.salesFromServer.daily)
+        
+        salesTodayOutlet.text = String(analytics.salesFromServer.today)
+
         
         // Set bar chart data to previously created data
-        salesView.alpha = 0
         
         //Update labels
-        salesTodayOutlet.text = "$\(String(analytics.sales.today))"
-        salesYesterdayOutlet.text = "$\(String(analytics.sales.yesterday))"
-        percentChangedOutlet.text = "\(String(analytics.sales.percentChangeToday))%"
+        salesTodayOutlet.text = "$\(String(analytics.salesFromServer.today))"
+        salesYesterdayOutlet.text = "$\(String(analytics.salesFromServer.yesterday))"
+        percentChangedOutlet.text = "\(String(analytics.salesFromServer.percentChangeToday))%"
         
         //Calculate and display precentage change
-        var change:Double? = analytics.sales.percentChangeToday
+        var change:Double? = analytics.salesFromServer.percentChangeToday
         if(change > 0){
             percentChangedOutlet.textColor = UIColor.greenColor()
         }else{
@@ -53,6 +66,7 @@ class ViewController: UIViewController, UITableViewDelegate{
         }
         
     }
+    
     
     //MARK: Set Chart Data
     func setChart(dataPoints: [String], values: [Double]) {
@@ -67,7 +81,7 @@ class ViewController: UIViewController, UITableViewDelegate{
         let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: "Units Sold")
         let lineChartData = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
         lineChartView.data = lineChartData
-        lineChartView.animate(xAxisDuration: 2.0, easingOption: .EaseOutQuad)
+        //lineChartView.animate(xAxisDuration: 2.0, easingOption: .EaseOutQuad)
         lineChartView.userInteractionEnabled = false
         
     }

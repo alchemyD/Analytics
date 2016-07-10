@@ -26,7 +26,7 @@ class QuarterlyViewController: UIViewController {
         })
         
         let quarter = ["Q1", "Q2", "Q3", "Q4"]
-        setChart(quarter, values: analytics.sales.quarterly)
+        setChart(quarter, values: analytics.salesFromServer.quarterly)
         
     }
     

@@ -14,11 +14,13 @@ import UIKit
 class BaseAnalytics {
     
     var jsonObj: JSON!
-    var serverJson: JSON!
+    var serverJson: JSON! = 0
     var name:Double! = 0
+    
+    
     init(jsonPath: String){
         
-        //MARK: Get JSON from URL        
+        //MARK: Get JSON from URL
         Alamofire.request(.GET, "http://www.dornerdigital.com/sales/SalesData.json")
             .responseJSON { response in
               //  print(response.request)  // original URL request
